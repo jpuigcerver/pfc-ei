@@ -29,7 +29,7 @@ memoria.pdf: memoria.ps
 	ps2pdf memoria.ps
 
 clean: 
-	rm -f *.lot *.lof *.dvi *.log *.aux *.toc *.bbl *.blg
+	rm -f *.lot *.lof *.dvi *.log *.aux *.toc *.bbl *.blg *~
 
 distclean: clean
 	rm -f memoria.ps memoria.pdf
