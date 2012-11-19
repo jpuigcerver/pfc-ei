@@ -1,0 +1,240 @@
+\documentclass[10pt,catalan,a4paper,authoryear,twoside]{book}
+ 
+\usepackage[utf8]{inputenc}
+%\usepackage[applemac]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+\usepackage{multirow,url,dcolumn}
+\usepackage[T1]{fontenc}
+\usepackage{pifont}
+\usepackage{psfrag}
+\usepackage{epsfig}
+\usepackage{pstricks,pst-plot,pst-node} % core PSTricks packages (loaded first)
+\usepackage{pst-text} 
+%\usepackage{arrayjob,multido,ifthen}
+\usepackage{slashbox}
+\usepackage{moreverb}
+\usepackage[catalan]{babel}
+\usepackage{varioref}
+%\usepackage{subfig}
+%\DeclareGraphicsRule{.emf}{bmp}{}{}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+% Schema for thesis format
+% --------------------------------------------------------------
+\usepackage[Glenn]{fncychap}
+\ChNumVar{\fontsize{76}{80}\usefont{OT1}{pzc}{m}{n}\selectfont}
+\ChTitleVar{\raggedleft\Large\sffamily\bfseries}
+
+\usepackage[vcentering,dvips,papersize={170mm,240mm},
+total={130mm,210mm},includehead,includefoot]{geometry}
+\usepackage[cam,width=17truecm,height=21truecm,center]{crop}
+
+
+% Enumeration of chapters, sections and table of contents
+% --------------------------------------------------------------
+\addtocounter{tocdepth}{1}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+% Headers and page numbers
+% --------------------------------------------------------------
+\usepackage{fancyhdr} % To add headers
+\pagestyle{fancy}
+\fancyhead{}
+
+\fancyhead[RO]{\slshape\small \nouppercase{\rightmark}}
+\fancyhead[LE]{\slshape\small \nouppercase{\leftmark}}
+\fancyfoot[RE,LO]{\upshape\tiny PRHLT-DSIC-UPV} %% REVISAR %%
+\fancyfoot[C]{\thepage}
+
+\usepackage[below]{placeins}
+\renewcommand{\textfraction}{0.0}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\floatpagefraction}{1.0}
+\usepackage{afterpage}
+\usepackage{float}
+\usepackage[bf]{caption}
+\renewcommand{\captionfont}{\linespread{0.95}\small}
+\setcaptionmargin{1cm}
+\setlength{\belowcaptionskip}{2mm}
+
+\usepackage[hang,raggedright,nooneline]{subfigure}
+\renewcommand{\subcapsize}{\linespread{.2}\scriptsize}
+\renewcommand{\subfigcapskip}{0mm}
+\renewcommand{\subfigbottomskip}{0mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{listings}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+
+% Chapter header format
+% --------------------------------------------------------------
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{30\p@}%
+  {\parindent \z@ \raggedleft \reset@font
+          \Large \scshape \@chapapp{} \thechapter
+        \par\nobreak
+        \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    %\vspace*{1\p@}%
+    \hrulefill
+    \par\nobreak
+    \vskip 55\p@
+  }}
+
+\def\@makeschapterhead#1{%
+  %\vspace*{10\p@}%
+  {\parindent \z@ \raggedleft \reset@font
+            \scshape \vphantom{\@chapapp{} \thechapter}
+        \par\nobreak
+        \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    %\vspace*{1\p@}%
+    %\hrulefill
+    \par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
+\graphicspath{{images/}}
+
+\definecolor{DarkGreen}{cmyk}{.9,0,.9,.7}
+
+\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\x}{\vec{x}}
+\newcommand{\y}{\vec{y}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\X}{X}
+\newcommand{\Y}{Y}
+\newcommand{\U}{U}
+\newcommand{\V}{V}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+%\renewcommand{\thefootnote}{\alph{footnote}} % To change footnote enumeration from number to letters
+
+\newcommand{\marginnote}[2][0] {
+ \marginpar{\vspace{#1}
+             \begin{minipage}{20mm}
+                \setlength{\baselineskip}{10pt}
+                \flushleft
+                \begin{scriptsize} {#2} \end{scriptsize}
+             \end{minipage}}
+}
+
+\title{
+  \begin{small}
+    UNIVERSITAT POLITÈCNICA DE VALÈNCIA\\
+  \vspace{0.25cm}
+    ESCOLA TÈCNICA SUPERIOR D'ENGINYERIA INFORMÀTICA\\
+  \vspace{0.25cm}
+    DEPARTAMENT DE SISTEMES INFORMÀTICS I COMPUTACIÓ\\
+  \end{small}
+  \vspace{1cm}
+  \begin{center}
+    \mbox{\includegraphics[width=6cm]{upv_val}}
+  \end{center}
+  \vspace{1cm}
+  \begin{LARGE}
+    % Title Page
+    Quantificació de les millores en la segmentació del cos central del text manuscrit utilitzant aprenentatge supervisat
+  \end{LARGE}
+}
+\author{
+  \vspace{1cm}
+  %\begin{small}
+	Projecte Final de Carrera - Enginyeria Informàtica \\
+  %\end{small}
+  Joan Puigcerver i Pérez\\
+  \\
+  Supervisat per:\\
+  Dr. Moisés Pastor i Gadea
+}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+\clearemptydoublepage
+
+\newpage\thispagestyle{empty}
+
+\vspace*{2in}
+\begin{flushright}
+{\large {\it Dedicatòria}}
+\end{flushright}
+
+\clearemptydoublepage
+
+\tableofcontents
+
+\clearemptydoublepage
+
+\mainmatter
+
+% 1. Introducció
+%   1.1. Motivació
+%   1.2. Reconeixement de formes
+%   1.2. Reconeixement de text manuscrit offline
+% 2. Tècniques de la segmentació del cos central
+%   2.1. Aproximació heurística
+%   2.2. Aproximació Supervised Learning
+% 3. Corpus
+% 4. Experimentació
+%   4.1. Preprocés
+%   4.2. Model de llenguatge
+%   4.3. Aïllament de la normalització de la grandària
+%   4.4. Resum de resultats
+% 4. Conclusions
+
+\input{introduccio.tex}
+\clearemptydoublepage
+
+\input{segmentacio.tex}
+\clearemptydoublepage
+
+\input{corpus.tex}
+\clearemptydoublepage
+
+\input{experiments.tex}
+\clearemptydoublepage
+
+\input{conclusions.tex}
+\clearemptydoublepage
+
+\bibliographystyle{alpha}
+\bibliography{memoria}
+
+\listoffigures
+\listoftables
+
+\end{document}
+
