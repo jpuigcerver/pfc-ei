@@ -16,7 +16,6 @@
 \usepackage{moreverb}
 \usepackage[catalan]{babel}
 \usepackage{varioref}
-%\usepackage{subfig}
 %\DeclareGraphicsRule{.emf}{bmp}{}{}
 %\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 % Schema for thesis format
@@ -43,7 +42,7 @@ total={130mm,210mm},includehead,includefoot]{geometry}
 
 \fancyhead[RO]{\slshape\small \nouppercase{\rightmark}}
 \fancyhead[LE]{\slshape\small \nouppercase{\leftmark}}
-\fancyfoot[RE,LO]{\upshape\tiny PRHLT-DSIC-UPV} %% REVISAR %%
+%\fancyfoot[RE,LO]{\upshape\tiny PRHLT-DSIC-UPV} %% REVISAR %%
 \fancyfoot[C]{\thepage}
 
 \usepackage[below]{placeins}
@@ -54,14 +53,15 @@ total={130mm,210mm},includehead,includefoot]{geometry}
 \usepackage{afterpage}
 \usepackage{float}
 \usepackage[bf]{caption}
-\renewcommand{\captionfont}{\linespread{0.95}\small}
+\usepackage{subcaption}
+%\renewcommand{\captionfont}{\linespread{0.95}\small}
 \setcaptionmargin{1cm}
 \setlength{\belowcaptionskip}{2mm}
 
-\usepackage[hang,raggedright,nooneline]{subfigure}
-\renewcommand{\subcapsize}{\linespread{.2}\scriptsize}
-\renewcommand{\subfigcapskip}{0mm}
-\renewcommand{\subfigbottomskip}{0mm}
+%\usepackage[hang,raggedright,nooneline]{subfigure}
+%\renewcommand{\subcapsize}{\linespread{.2}\scriptsize}
+%\renewcommand{\subfigcapskip}{0mm}
+%\renewcommand{\subfigbottomskip}{0mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -169,9 +169,7 @@ total={130mm,210mm},includehead,includefoot]{geometry}
 }
 \author{
   \vspace{1cm}
-  %\begin{small}
-	Projecte Final de Carrera - Enginyeria Informàtica \\
-  %\end{small}
+  \small{Projecte Final de Carrera - Enginyeria Informàtica}\\
   Joan Puigcerver i Pérez\\
   \\
   Supervisat per:\\
