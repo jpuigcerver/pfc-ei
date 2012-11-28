@@ -104,4 +104,11 @@ En el cas del reconeixement de text \emph{offline} i continu, típicament s'extr
 \hat{s} = \argmax_{s \in \Sigma^*} p(s|\vec{x}) = \argmax_{s \in \Sigma^*} p(\vec{x}|s) p(s) %= \argmax_{s \in \Sigma^*} p(\vec{x}_1, \vec{x}_2, \ldots \vec{x}_T | s) p(s)
 \end{equation}
 
-Habitualment, la distribució a posteriori $p(\vec{x}|s)$ es modela utilitzant Models Ocults de Markov (HMM, de l'anglès \emph{Hidden Markov Models}) i $p(s)$ es modela utilitzant models de llenguatge de $n$-grames. Aquesta és l'aproximació que s'ha utilitzat en aquest projecte.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/finestra_lliscant.eps}
+\caption{Finestra lliscant d'anàlisi en una imatge}
+\label{fig:finestra_lliscant}
+\end{figure}
+
+Habitualment, la distribució a posteriori $p(\vec{x}|s)$ es modela utilitzant Models Ocults de Markov (HMM, de l'anglès \emph{Hidden Markov Models}) i Models de Mixtures Gaussianes (GMM, de l'anglès \emph{Gaussian Mixture Models}) i $p(s)$ es modela utilitzant models de llenguatge de $n$-grames. Aquesta és l'aproximació que s'ha utilitzat en aquest projecte.
