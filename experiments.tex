@@ -1,2 +1,42 @@
 \chapter{Experimentació} 
 \label{cap:exp}
+La principal tasca d'aquest projecte fou la de dissenyar els experiments de manera que els resultats foren el més possiblement comparables, de manera que l'única diferència que hi hagués entre el reconeixement emprant els dos mètodes fou la de la segmentació del cos central del text en les imatges. D'aquesta manera es pot conèixer exactament quines són les diferències quantitatives entre els dos mètodes, calculant la diferència en l'error de reconeixement obtingut a l'emprar les dues alternatives.\\
+
+A banda de la publicació original on s'explicava l'aproximació que utilitza aprenentatge supervisat per a la segmentació del text \cite{DBLP:conf/pris/Gorbe-MoyaEZB08}, els mateixos autors publicaren en la revista \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence} (PAMI), el 2011, una comparativa entre dos estratègies per a la modelització dels models morfològics. Una basada únicament en HMM i l'altra un híbrid entre HMM i ANN \cite{espana2011improving}. L'interessant d'aquesta publicació per a l'objectiu d'aquest projecte és que utilitzava la segmentació del cos central supervisada (secció \ref{sec:seg_nn}) en ambdós casos i donava més detalls sobre l'entrenament complet del reconeixedor (model de llenguatge, models morfològics, etc) que no pas l'article original on s'explica la segmentació del cos central utilitzant aprenentatge supervisat.\\
+
+El disseny dels experiments ací descrits busca reproduir els resultats publicats en \cite{espana2011improving} del reconeixedor basat únicament en HMM utilitzant la segmentació del cos supervisada i comparar-los en un altre reconeixedor basat també en HMM i utilitzant la mateixa segmentació.
+
+\section{Preprocessament de les imatges}
+En els dos reconeixedors entrenats, s'aplicà el següent procés de preprocessament a les línies de text d'IAMDB.
+\begin{enumerate}
+\item Neteja de la imatge. L'objectiu d'aquesta etapa és la de netejar el soroll en les imatges utilitzades. La tècnica utilitzada fou la descrita en FALTA CITA.%\ref{}.
+\item Correcció \emph{slant}. L'objectiu d'aquesta etapa és la de corregir l'angle 
+\item Correcció \emph{slope}
+\item Segmentació del cos central. Única part del preprocessament que canviava respecte als dos reconeixedors entrenats. En un s'utilitza la tècnica descrita en la secció \ref{sec:seg_heur} i en el segon la descrita en la secció \ref{sec:seg_nn}.
+\item Normalització de l'altura d'ascendents i descendents
+\item Extracció de característiques
+\end{enumerate}
+
+\section{Model del llenguatge}
+
+\section{Model morfològic}
+
+\begin{table}
+\centering
+\begin{tabular}{cc|c|c|c|}
+\cline{3-5}
+& & \multicolumn{3}{c|}{Components de la mixtura} \\
+\cline{3-5}
+& & 16 & 32 & 64 \\ 
+\cline{1-5}
+\multicolumn{1}{|c|}{\multirow{3}{*}{Nombre mitjà d'estats}} & 7 &  54.91 & 46.75 & 42.84 \\
+\cline{2-5}
+\multicolumn{1}{|c|}{} & 8 &  54.24 & 46.08 & \textbf{42.21} \\
+\cline{2-5}
+\multicolumn{1}{|c|}{} & 9 &  54.41 & 47.73 & 44.53 \\
+\cline{1-5}
+\end{tabular}
+\caption{WER en el conjunt de validació utilitzant diferents paràmetres per a l'estimació dels HMM utilitzant la segmentació heurística.}\label{table:estimacio_parametres_HMM}
+\end{table} 
+
+\section{Postprocessament al reconeixement}

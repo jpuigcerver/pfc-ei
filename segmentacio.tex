@@ -72,20 +72,20 @@ Aquesta aproximació assumeix que les línies inferiors i superiors poden ser ap
 \label{sec:seg_nn}
 Aquesta aproximació a la segmentació del cos central del text que fa ús d'aprenentatge supervisat fou presentada en \cite{DBLP:conf/pris/Gorbe-MoyaEZB08} i fa ús d'una xarxa neuronal multicapa per a classificar certs punts de la imatge en cinc classes: ascendent, línia superior, línia inferior, descendent i altres.\\
 
-Per tal d'utilitzar aquesta tècnica s'han d'extreure un conjunt de punts extrems locals a partir del contorn de la imatge. Aquests punts sobtenen de la següent manera.
+Per tal d'utilitzar aquesta tècnica s'han d'extreure un conjunt de punts extrems locals a partir del contorn de la imatge. Aquests punts s'obtenen de la següent manera.
 \begin{enumerate}
 \item Per a cada columna de la imatge, es busquen els punts de la frontera entre un píxel de fons (típicament blancs) i un píxel d'un símbol (típicament negres). D'aquesta manera s'obté el contorn de la imatge.
 \item Els punts seleccionats s'agrupen per línies utilitzant un criteri de proximitat.
 \item NO ESTÀ CLAR!
 \end{enumerate}
 
-Una vegada s'han obtingut els extrems locals, es situa una finestra de $W_w \times H_w$ píxels centrada en cada punt. Aquesta finestra es redueix a una grandària de $W_f \times H_f$ utilitzant una distorsió d'ull de peix, de manera que els punts a prop del lloc d'interés queden resaltats sobre aquells més llunyans. Aquesta serà l'entrada a la xarxa neuronal.\\
+Una vegada s'han obtingut els extrems locals, es situa una finestra de $W_w \times H_w$ píxels centrada en cada punt. Aquesta finestra es redueix a una grandària de $W_f \times H_f$ utilitzant una distorsió d'ull de peix, de manera que els punts a prop del lloc d'interés queden ressaltats sobre aquells més llunyans. Aquesta serà l'entrada a la xarxa neuronal.\\
 
 Per a entrenar la xarxa neuronal, s'utilitzen imatges amb els seus extrems locals classificats manualment, de manera que la xarxa neuronal aprèn a classificar un extrem local en una de les cinc classes mencionades anteriorment.\\
 
-Per a segmentar el cos central d'una imatge de \emph{test}, es classifiquen tots els punts utilitzant la xarxa neuronal entrenada anteriorment. Llavors tots els punts pertanyents a una mateixa classe són utilitzats per a fer una interpolació lineal i obtenir cadascuna de les quatre línies de referència (els píxels classificats com a ``altres'' no s'utilitzen).\\
+Per a segmentar el cos central d'una imatge de \emph{test}, es classifiquen tots els punts utilitzant la xarxa neuronal entrenada anteriorment. Llavors tots els punts pertanyents a una mateixa classe són utilitzats per a fer una interpolació lineal i obtenir cadascuna de les quatre línies de referència (els píxels classificats com ``altres'' no s'utilitzen).\\
 
-La figura \ref{fig:comp_seg_mlp_result} mostra el resultat d'aplicar l'alterior algorisme a una imatge que conté text manuscrit. Els punts marcats són els extrems locals classificats, les línies verdes són la línia base superior i inferior i les roges marquen el l'altura dels ascendents i descendents.\\
+La figura \ref{fig:comp_seg_mlp_result} mostra el resultat d'aplicar l'anterior algorisme a una imatge que conté text manuscrit. Els punts marcats són els extrems locals classificats, les línies verdes són la línia base superior i inferior i les roges marquen el l'altura dels ascendents i descendents.\\
 
 % COMPARACIÓ VISUAL ENTRE LES DUES TÈCNIQUES
 \begin{figure}
