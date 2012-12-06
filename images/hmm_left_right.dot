@@ -1,0 +1,11 @@
+digraph hmm_left_right {
+  rankdir = LR;
+  node [shape = "circle", label = ""]; a b c d e;
+  node [shape = "doublecircle"]; f;
+  a -> b -> c -> d -> e -> f;
+  a -> a;
+  b -> b;
+  c -> c;
+  d -> d;
+  e -> e;
+}

@@ -60,12 +60,45 @@ La figura \ref{fig:pasos_segmentacio_heuristica} mostra tots els passos de la no
 \caption{Resultat de cada pas de la segmentació del cos central utilitzant l'algorisme heurístic.}\label{fig:pasos_segmentacio_heuristica}
 \end{figure}
 
-Aquesta aproximació assumeix que les línies inferiors i superiors poden ser aproximades a una recta amb molt poc d'error. Aquesta assumpció pot no complir-se en la realitat i per tant, pot obtenir unes aproximacions a les línies inferiors i superiors molt dolentes, que alhora fan malbé les diferents etapes del preprocessament que depenen de la segmentació del cos central, com per exemple la normalització de la grandària.
+Aquesta aproximació assumeix que les línies inferiors i superiors poden ser aproximades a una recta amb molt poc d'error. Aquesta assumpció pot no complir-se en la realitat i per tant, pot obtenir una mala aproximació a les línies inferiors i superiors. Un altre inconvenient d'aquest mètode és el llindar que s'utilitza per a fer l'esborronat en l'algorisme RLSA. En aquest algorisme s'uneixen dos píxels negres en una mateixa fila sempre que la separació siga menor que un cert llindar. Aquest llindar pot fer-se fixe o relatiu a la imatge. Siga com siga, si no s'ajusta bé aquest llindar pot ocasionar problemes com els de la figura \ref{fig:pasos_mala_segmentacio}, que alhora fan malbé les diferents etapes del preprocessament que depenen de la segmentació del cos central, com per exemple la normalització de la grandària.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{images/pending_image.eps}
-\caption{La segmentació del cos central en aquesta imatge és clarament dolenta.}\label{fig:seg_heur_mal_resultat}
+\begin{subfigure}[b]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do.eps}
+\caption{}\label{fig:pasos_mala_seg_original}
+\end{subfigure}
+~
+\begin{subfigure}[b]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do_RLSA.eps}
+\caption{}\label{fig:pasos_mala_seg_rlsa}
+\end{subfigure}
+~
+\begin{subfigure}[b]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do_upcont.eps}
+\caption{}\label{fig:pasos_mala_seg_sup}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do_lowcont.eps}
+\caption{}\label{fig:pasos_mala_seg_inf}
+\end{subfigure}
+~
+\begin{subfigure}[b]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do_result.eps}
+\caption{}\label{fig:pasos_mala_seg_lines}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.7\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/do_norm.eps}
+\caption{}\label{fig:pasos_mala_seg_norm}
+\end{subfigure}
+\caption{Exemple d'una segmentació dolenta i els seus efectes. La figura \ref{fig:pasos_mala_seg_original} mostra la imatge original, la figura \ref{fig:pasos_mala_seg_rlsa} el resultat de l'algorisme RLSA, les figures \ref{fig:pasos_mala_seg_inf} i \ref{fig:pasos_mala_seg_sup} les vores inferior i superior detectades, la \ref{fig:pasos_mala_seg_lines} mostra les línies obtingudes a partir de les vores i finalment la figura \ref{fig:pasos_mala_seg_norm} el resultat de la normalització.}\label{fig:pasos_mala_segmentacio}
 \end{figure}
 
 \section{Aproximació utilitzant aprenentatge supervisat}
@@ -81,7 +114,7 @@ Per tal d'utilitzar aquesta tècnica s'han d'extreure un conjunt de punts extrem
 
 Una vegada s'han obtingut els extrems locals, es situa una finestra de $W_w \times H_w$ píxels centrada en cada punt. Aquesta finestra es redueix a una grandària de $W_f \times H_f$ utilitzant una distorsió d'ull de peix, de manera que els punts a prop del lloc d'interés queden ressaltats sobre aquells més llunyans. Aquesta serà l'entrada a la xarxa neuronal.\\
 
-Per a entrenar la xarxa neuronal, s'utilitzen imatges amb els seus extrems locals classificats manualment, de manera que la xarxa neuronal aprèn a classificar un extrem local en una de les cinc classes mencionades anteriorment.\\
+Per a entrenar la xarxa neuronal, s'utilitzen imatges amb els seus extrems locals classificats manualment, de manera que la xarxa neuronal aprèn a classificar un extrem local en una de les cinc classes mencionades anteriorment. Alternativament, per a facilitar l'entrenament del sistema, un humà pot corregir els punts classificats automàticament per un altre sistema més rudimentari per a la detecció de les línies de referència \cite{DBLP:conf/pris/Gorbe-MoyaEZB08}. Els detalls sobre l'entrenament de xarxes neuronals poden consultar-se en diverses fonts sobre aprenentatge automàtic \cite{DH73,bishop2006pattern,murphy2012machine}.
 
 Per a segmentar el cos central d'una imatge de \emph{test}, es classifiquen tots els punts utilitzant la xarxa neuronal entrenada anteriorment. Llavors tots els punts pertanyents a una mateixa classe són utilitzats per a fer una interpolació lineal i obtenir cadascuna de les quatre línies de referència (els píxels classificats com ``altres'' no s'utilitzen).\\
 
@@ -90,36 +123,34 @@ La figura \ref{fig:comp_seg_mlp_result} mostra el resultat d'aplicar l'anterior 
 % COMPARACIÓ VISUAL ENTRE LES DUES TÈCNIQUES
 \begin{figure}
 \centering
-\begin{subfigure}[b]{0.8\textwidth}
+\begin{subfigure}[b]{0.9\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/comp_seg_original.eps}
 \caption{}\label{fig:comp_seg_original}
 \end{subfigure}\\
 % Resultat de la segmentació segons cada tècnica.
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.9\textwidth}
 \centering
-\includegraphics[width=\textwidth]{images/pending_image.eps}
+\includegraphics[width=\textwidth]{images/comp_seg_heur_result.eps}
 \caption{}\label{fig:comp_seg_heur_result}
-\end{subfigure}
-~
-\begin{subfigure}[b]{0.45\textwidth}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.9\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/comp_seg_mlp_result.eps}
 \caption{}\label{fig:comp_seg_mlp_result}
 \end{subfigure}\\
 % Resultat de la normalització segons cada tècnica.
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.9\textwidth}
 \centering
-\includegraphics[width=\textwidth]{images/pending_image.eps}
+\includegraphics[width=\textwidth]{images/comp_seg_heur_norm.eps}
 \caption{}\label{fig:comp_seg_heur_norm}
-\end{subfigure}
-~
-\begin{subfigure}[b]{0.45\textwidth}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.9\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/comp_seg_mlp_norm.eps}
 \caption{}\label{fig:comp_seg_mlp_norm}
 \end{subfigure}
-\caption{Imatge original (\ref{fig:comp_seg_original}), segmentació del cos central segons l'aproximació heurística i basada en aprenentatge supervisat (\ref{fig:comp_seg_heur_result}, \ref{fig:comp_seg_mlp_result}) i resultat de la normalització segons cada aproximació (\ref{fig:comp_seg_heur_norm}, \ref{fig:comp_seg_mlp_norm}).}\label{fig:comp_seg}
+\caption{Imatge original (\ref{fig:comp_seg_original}), segmentació del cos central segons l'aproximació heurística i basada en aprenentatge supervisat (\ref{fig:comp_seg_heur_result}, \ref{fig:comp_seg_mlp_result}) i resultat de la normalització segons cada aproximació (\ref{fig:comp_seg_heur_norm}, \ref{fig:comp_seg_mlp_norm}) \cite{DBLP:conf/pris/Gorbe-MoyaEZB08}.}\label{fig:comp_seg}
 \end{figure}
 
 Les figures \ref{fig:comp_seg_heur_result} i \ref{fig:comp_seg_mlp_result} mostren les diferències en les assumpcions que fan cadascun dels dos mètodes explicats. La major informació que aporta la detecció de les línies de referència utilitzant el mètode supervisat pot oferir clarament una millora significativa a l'hora d'aplicar el procés de normalització a la imatge. En els següents capítols s'explicarà com s'han quantificat aquestes diferències per demostrar que, efectivament, l'ús del mètode supervisat millora considerablement el reconeixement de text manuscrit.

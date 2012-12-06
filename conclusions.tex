@@ -1,2 +1,24 @@
 \chapter{Conclusions}
 \label{cap:con}
+
+La taula \ref{tab:summary} situa els resultats obtinguts en aquest treball en comparació amb resultats obtinguts prèviament en la mateixa tasca de reconeixement.\\
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Validació & Test \\\hline\hline
+Bertolami et al. \cite{bertolami2008hidden} & \textbf{30.98} & \textbf{35.52} \\\hline
+España Boquera et al. \cite{espana2011improving} & 32.80 & 38.80  \\\hline
+Seg. Supervisada & 32.99 & 40.08 \\\hline
+Seg. Heurística & 38.74 & 45.54 \\\hline
+\end{tabular}
+\caption{Comparació del WER de les alternatives estudiades amb altres publicacions.}\label{tab:summary}
+\end{center}
+\end{table}
+
+En aquesta taula s'observa que els resultats obtinguts a partir del sistema que empra una segmentació del cos central basada en aprenentatge supervisat no correspon als resultats obtinguts en la publicació. Això és degut a que, a pesar d'intentar replicar els experiments amb el major detall possible i comptar amb la col·laboració dels autors de l'article, hi ha nombrosos detalls sobre l'experimentació publicada que eren desconeguts i/o no van poder ser replicats. D'ací aquesta petita diferència en les mesures obtingudes.\\
+
+Més important encara, s'observa que l'utilització d'una segmentació del cos central del text manuscrit utilitzant aprenentatge supervisat redueix un $11.99\%$ el WER respecte a l'alternativa tradicional basada en un enfocament heurístic, en la tasca de reconeixement del corpus IAMDB, un important corpus utilitzat a l'hora de mesurar els errors en les transcripcions dels sistemes de reconeixement automàtic de text manuscrit.\\
+
+Queda per tant comprovada la hipòtesi que es presentava al descriure les diferències entre els dos enfocaments per a la segmentació del cos central del text manuscrit: l'ús d'una tècnica basada en aprenentatge supervisat millora significativament la segmentació heurística. Aquesta millora a sigut quantificada satisfactoriament a pesar de les dificultats a l'hora de reproduir els detalls de les experimentacions publicades amb anterioritat i sols queda per tant fer front a la qüestió de si aquesta millora compensa el cost econòmic i temporal d'utilitzar aquesta tècnica basada en aprenentatge supervisat per a sistemes reals.

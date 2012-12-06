@@ -12,13 +12,15 @@ pdf: memoria.pdf
 #	cd img && gnuplot err.plt && cd ..
 
 CHAPTERS=introduccio.tex segmentacio.tex corpus.tex \
-experiments.tex conclusions.tex
+experiments.tex conclusions.tex memoria.bib
+
+DOTIMGS=images/hmm_left_right.dot
 
 quick: memoria.tex $(CHAPTERS)
 	latex memoria.tex
 	dvi2ps memoria.dvi -o memoria.ps
 
-memoria.ps: memoria.tex $(CHAPTERS)
+memoria.ps: memoria.tex $(CHAPTERS) dotimgs
 	latex memoria.tex
 	bibtex memoria
 	latex memoria.tex
@@ -33,3 +35,6 @@ clean:
 
 distclean: clean
 	rm -f memoria.ps memoria.pdf
+
+dotimgs:
+	dot -Tps -oimages/hmm_left_right.ps images/hmm_left_right.dot
