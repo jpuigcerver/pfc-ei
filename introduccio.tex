@@ -6,17 +6,17 @@ Des de fa unes poques dècades, els ordinadors permeten emmagatzemar una àmplia
 
 Malauradament, els llibres manuscrits i impresos no sempre han tingut èxit en la seva missió de preservar el coneixement. Sols cal recordar el desastrós incendi de l'antiga Biblioteca d'Alexandria que provocà que milers d'obres d'autors de l'antiguitat es perderen per sempre. Ajudar a la preservació de la informació continguda en els llibres manuscrits i ajudar també a la cerca del contingut en aquests, són dos dels motius que van fer nàixer el reconeixement de text manuscrit (HTR, de l'anglès \emph{Handwriting Text Recognition}) a principis del segle XX.\\
 
-A pesar de tot el progrés aconseguit en els últims anys pel Reconeixement de Text Manuscrit, aquest té encara molts problemes per resoldre causats perquè gran part de la variabilitat que es troba en les imatges que s'utilitzen per reconèixer el text dels llibres no aporta cap informació rellevant per a la classificació dels símbols representats i dificulta el seu reconeixement. Per exemple, un mateix autor no escriu un mateix símbol sempre de la mateixa forma, ni de la mateixa grandària i ni tan sols amb la mateixa orientació; i l'objectiu és que tots aquests diferents traços siguen classificats de la mateixa manera. Per això, un dels components fonamentals de qualsevol sistema de reconeixement de l'escriptura és la normalització d'aquesta imatge, un procés que tracta de reduir aquesta variabilitat.\\
+Tot i el progrés aconseguit en els últims anys pel Reconeixement de Text Manuscrit, aquest encara té molts problemes per resoldre. Molts d'ells causats perquè la gran variabilitat que presenta el text, en quant a l'estil d'escriptura, no aporta cap informació rellevant per a la classificació dels símbols representats a les imatges i dificulta el seu reconeixement. Per exemple, un mateix autor no escriu un mateix símbol sempre de la mateixa forma, ni de la mateixa grandària i ni tan sols amb la mateixa orientació. Per això, un dels components fonamentals de qualsevol sistema de reconeixement de l'escriptura és la normalització d'aquest text a la imatge, un procés que tracta de reduir aquesta variabilitat.\\
 
 Aquest projecte compara i quantifica les diferències entre dues alternatives per solucionar un dels problemes que forma part d'aquest procés de normalització: la segmentació del del cos central del text manuscrit. El cos central d'una línia de text manuscrit és aquella porció de la línia on resideix el cos central de cadascun dels símbols que formen el text. Les dues alternatives estudiades per a aquesta segmentació del cos central estan basades en un enfocament heurístic del problema, on un algorisme amb unes regles pre-establertes determina quina és la regió del cos central, i una altra basada en tècniques d'aprenentatge supervisat, on un humà ha segmentat manualment el cos central d'un conjunt d'imatges de mostra i ha entrenat el sistema per a que intente segmentar de manera semblant les noves imatges. Els detalls es veuran en el capítol \ref{cap:seg}.
 
 
 \section{Reconeixement de formes}
-El reconeixement de formes (de l'anglès \emph{Pattern Recognition}) és una branca de l'aprenentatge automàtic que té com a objectiu fer que una màquina (un ordinador) tinga la capacitat de discernir entre diferents objectes del seu entorn. El sistema pot percebre el seu entorn a partir de diferents sensors com poden ser càmeres fotogràfiques o de vídeo, micròfons, sensors làser, de temperatura, etc. L'objectiu és, a partir de les senyals obtingudes per aquests sensors, descobrir i atorgar una significat als diferents objectes representats en les senyals (típicament, assignar-los a una categoria) \cite{DH73}.\\
+El reconeixement de formes (de l'anglès \emph{Pattern Recognition}) és una branca de l'aprenentatge automàtic que té com a objectiu fer que una màquina (un ordinador) tinga la capacitat de discernir entre diferents objectes del seu entorn. El sistema pot percebre el seu entorn a partir de diferents sensors com poden ser càmeres fotogràfiques o de vídeo, micròfons, sensors làser, de temperatura, etc. L'objectiu és, a partir dels senyals obtinguts per aquests sensors, descobrir i atorgar un significat als diferents objectes representats en els senyals (típicament, assignar-los a una categoria) \cite{DH73}.\\
 
-Existeixen dos grans grups de problemes de reconeixement de formes. El primer, com s'havia dit, consisteix en assignar una categoria a algun objecte representat per una imatge. Per exemple, donada una imatge que conté una lletra, decidir quina lletra hi ha representada. És diu d'aquests problemes que tenen un aprenentatge supervisat perquè al sistema se l'entrena amb senyals d'entrada prèviament etiquetades, de manera que puga aprendre quines són les propietats en el senyal que determinen la seva categoria.\\
+Existeixen dos grans grups de problemes de reconeixement de formes. El primer, com s'havia dit, consisteix en assignar una categoria a algun objecte representat per una imatge. Per exemple, donada una imatge que conté un símbol, decidir quin és aquest símbol d'entre un conjunt de possibilitats (reconèixer el símbol a la imatge). És diu d'aquests problemes que tenen un aprenentatge supervisat perquè al sistema se l'entrena amb senyals d'entrada prèviament etiquetats, de manera que puga aprendre quines són les propietats del senyal que determinen la seva categoria.\\
 
-En el segon grup, no és disposa de les categories assignades al senyal durant l'etapa d'entrenament. L'objectiu d'aquest grup és descobrir propietats en el senyal d'entrada. Per exemple, assignar una categoria automàtica a cadascuna de les senyals d'entrada (\emph{clustering}) o trobar un model (típicament probabilístic) que permeta representar les dades d'entrenament. \\
+En el segon grup, no és disposa de les categories assignades al senyal durant l'etapa d'entrenament. L'objectiu d'aquest grup és descobrir propietats en el senyal d'entrada. Per exemple, assignar una categoria automàtica a cadascun dels senyals d'entrada (\emph{clustering}) o trobar un model (típicament probabilístic) que permeta representar les dades d'entrenament. \\
 
 Són moltes les aplicacions que poden ser interpretats com un problema de reconeixement de formes, és per això, i gràcies a l'avanç en la tecnologia informàtica, que l'interès en aquest camp a crescut notablement en les darreres dècades. Algunes de les aplicacions del reconeixement de formes són:
 \begin{itemize}
@@ -31,7 +31,7 @@ En el cas de l'aprenentatge supervisat, que és el més estès i el que s'utilit
 \begin{enumerate}
 \item \textbf{Preprocessament}: Al senyal se li apliquen diferents transformacions que tenen com a objectiu eliminar la informació no rellevant per a la classificació.
 \item \textbf{Extracció de característiques}: El resultat del preprocessament sol ser un senyal amb un alt nombre de dimensions i això dificulta l'estimació dels models per a la classificació. Per això, es tracta de reduir aquest nombre de dimensions extraient el que s'anomenen ``característiques'' del senyal (informació més rellevant per a representar-lo), que no són més que una representació del senyal en un espai menor de dimensions.
-\item \textbf{Aprenentatge}: S'aprèn un model per a classificar la senyal amb la informació aportada per les característiques de la senyal d'entrada i el coneixement a priori sobre les dades i la tasca (categoria del senyal, probabilitats de les categories, etc). Aquesta fase sols és utilitzada durant l'aprenentatge del model.
+\item \textbf{Aprenentatge}: S'aprèn un model per a classificar el senyal amb la informació aportada per les característiques del senyal d'entrada i el coneixement a priori sobre les dades i la tasca (categoria del senyal, probabilitats de les categories, etc). Aquesta fase sols és utilitzada durant l'aprenentatge del model.
 \item \textbf{Classificació}: Una vegada l'aprenentatge està complet, s'utilitzen les característiques del senyal i el model obtingut en el pas anterior per a predir la categoria d'una nova observació del senyal.
 \end{enumerate}
 
@@ -60,29 +60,27 @@ Si es conegueren les distribucions exactes de $p(x|c)$ i $p(c)$, el problema de 
 \section{Reconeixement de text manuscrit}
 El reconeixement de text manuscrit (HTR, de l'anglès \emph{Handwriting Text Recognition}) començà a desenvolupar-se a principis del segle XX amb l'aparició de dispositius que permetien classificar dígits o caràcters manuscrits sobre sensors d'una determinada forma \cite{Goldberg1914}. A mitjans del segle XX aparegueren els primers dispositius que permetien introduir el resultat d'aquesta classificació en un ordinador \cite{10.1109/AFIPS.1957.60} i fins i tot sistemes que eren capaços de reconèixer paraules manuscrites aïllades \cite{Harmon1962}. Aquests primers dispositius estaven limitats per el desenvolupament tècnic d'aquell temps i solien necessitar-se dispositius especials sobre els que escriure el text. No era possible reconèixer el text d'un document manuscrit existent (com un llibre o un formulari). Fou més tard i gràcies a l'expansió de la informàtica quan els sistemes HTR començaren a adquirir la qualitat necessària per a aplicar-los en tasques de reconeixement real, com ara el reconeixement de dígits en xecs bancaris o el reconeixement de codis postals en el servei de correu.\\
 
-Entre els sistemes HTR se'n diferencien dos tipus: el reconeixement \emph{online} i l'\emph{offline}. La diferència rau en el mètode en que el senyal d'entrada al sistema és adquirit. En els sistemes HTR \emph{online} el reconeixement es duu a terme en el mateix moment en el que s'escriu el text gràcies a l'ús de bolígrafs electrònics que capturen el moviment de la mà, la velocitat d'escriptura, la pressió sobre la superfície, etc. El reconeixement \emph{offline} es duu a terme una vegada el text ja ha sigut escrit sobre una superfície (típicament paper). Un escànner, càmera fotogràfica o de vídeo obté llavors una imatge de la superfície que conté el text a reconèixer i aquest és el senyal a utilitzar pel sistema de reconeixement. Degut a que en el reconeixement \emph{online} es disposa d'informació temporal que no està disponible en el reconeixement \emph{offline}, es considera que el primer és un problema més senzill de resoldre (aconseguir sistemes amb un menor error de reconeixement).\\
+Entre els sistemes HTR se'n diferencien dos tipus: el reconeixement \emph{online} i l'\emph{offline}. La diferència rau en el mètode en que el senyal d'entrada al sistema és adquirit. En els sistemes HTR \emph{online} el reconeixement es duu a terme en el mateix moment en el que s'escriu el text gràcies a l'ús de bolígrafs electrònics que capturen el moviment de l'eina d'escriptura, la velocitat d'escriptura, la pressió sobre la superfície, etc. El reconeixement \emph{offline} es duu a terme una vegada el text ja ha sigut escrit sobre una superfície (típicament paper). Un escànner, càmera fotogràfica o de vídeo obté llavors una imatge de la superfície que conté el text a reconèixer i aquest és el senyal a utilitzar pel sistema de reconeixement. Degut a que en el reconeixement \emph{online} es disposa d'informació temporal que no està disponible en el reconeixement \emph{offline}, es considera que el primer és un problema més senzill de resoldre (aconseguir sistemes amb un menor error de reconeixement).\\
 
-Una altra divisió en les tasques de reconeixement de text, és si aquest es troba segmentat o és continu. En el reconeixement de text segmentat, cadascun dels símbols a reconèixer es troba ben separat de la resta (figura \ref{fig:text_segmentat}). No ocorre el mateix en el reconeixement de text continu, on pot haver diferents símbols units per un mateix traç (figura \ref{fig:text_continu}). En el sistema d'escriptura occidental, el text continu és el més habitual en el text manuscrit. El cas continu es considera més difícil ja que la forma d'un símbol depèn fortament dels seus adjacents i l'unió de certs símbols pot ocasionar ambigüitat i requereix més context (per exemple, ``rn'' o ``m'', ``vv'' o ``w'', etc).\\
+Una altra divisió en les tasques de reconeixement de text, és si els símbols que apareixen es troben aïllats o són continus. En el reconeixement de símbols aïllats, cadascun dels símbols a reconèixer es troba ben separat de la resta (figura \ref{fig:text_segmentat}). No ocorre el mateix en el reconeixement de text continu, on pot haver diferents símbols units per un mateix traç (figura \ref{fig:text_continu}). En el sistema d'escriptura occidental, el text continu és el més habitual en el text manuscrit. El cas continu es considera més difícil ja que la forma d'un símbol depèn fortament dels seus adjacents i l'unió de certs símbols pot ocasionar ambigüitat i requereix més context (per exemple, ``rn'' o ``m'', ``vv'' o ``w'', etc).\\
 
 \begin{figure}
 \centering
 \begin{subfigure}[b]{0.4\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/reconeixement_segmentat.eps}
-\caption{Text segmentat}\label{fig:text_segmentat}
+\caption{Text amb símbols aïllats}\label{fig:text_segmentat}
 \end{subfigure}
 ~
 \begin{subfigure}[b]{0.4\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/reconeixement_continu.eps}
-\caption{Text continu}\label{fig:text_continu}
+\caption{Text amb símbols continu}\label{fig:text_continu}
 \end{subfigure}
 \caption{Dos exemples d'una paraula escrita amb text segmentat i continu.}
 \end{figure}
 
-Finalment, hi ha sistemes que estan restringits al reconeixement de paraules aïllades o de línies de text. El primer cas pot ser d'utilitat en aplicacions com el reconeixement d'adreces en cartes postals o el reconeixement de text en formularis, però resulta poc útil en el cas de voler reconèixer més d'una paraula (com les línies d'un llibre), ja que el context de cada paraula facilita el seu reconeixement i no aprofitar aquesta informació significa un major nombre d'errors.\\
-
-Els principals problemes, per tant, als que s'enfronta un bon sistema de reconeixement del text manuscrit són:
+Entre els principals problemes als que s'enfronta un bon sistema de reconeixement del text manuscrit són:
 \begin{itemize}
 \item \textbf{Soroll en les imatges}: la imatge capturada pot contenir soroll que depèn de l'eina d'escriptura (un bolígraf o un llapis), la superfície (paper o cartró) o el tipus d'eina d'adquisició i la seva qualitat.
 \item \textbf{Diferents estils d'escriptura}: el mateix símbol és escrit de moltes formes, no sols depenent de l'autor, sinó també depenent del seu estat d'ànim, rapidesa en l'escriptura, context en el que es situa el símbol, etc.
@@ -90,9 +88,9 @@ Els principals problemes, per tant, als que s'enfronta un bon sistema de reconei
 
 L'etapa de preprocessament que es descrivia abans intenta per una banda eliminar o reduir el soroll en les imatges, i per altra, reduir les diferències en els estils d'escriptura. La correcta segmentació del cos central del text és important per aplicar certes transformacions que tenen com a objectiu la reducció d'aquest segon problema.\\
 
-Aquest projecte s'ha realitzat en un context de reconeixement de text manuscrit \emph{offline}, continu i de línies completes. No obstant això, els mètodes estudiats en aquest projecte per a la segmentació del cos central del text poden ser utilitzats igualment en un entorn de text segmentat i/o paraules aïllades.\\
+Aquest projecte s'ha realitzat en un context de reconeixement de text manuscrit \emph{offline} i continu, encara que els mètodes estudiats en aquest projecte per a la segmentació del cos central del text poden ser utilitzats igualment en un entorn de text segmentat.\\
 
-Podem aplicar l'equació \ref{eq:bayes_classif} que s'havia presentat anteriorment per solucionar el problema del reconeixement de text \emph{offline}. Suposem que disposem d'una imatge $I$ que conté cert text, llavors l'objectiu és trobar la seqüència de símbols $\hat{s} = s_1, s_2, \ldots, s_N$ que maximitza la probabilitat de que aquests símbols siguen els representats en la imatge $I$.
+Podem aplicar l'equació \ref{eq:bayes_classif} que s'havia presentat anteriorment per solucionar el problema del reconeixement de text \emph{offline}. Suposem que disposem d'una imatge $I$ que conté cert text, llavors l'objectiu és trobar la seqüència de símbols $\hat{s} = s_1, s_2, \ldots, s_N$ que maximitza la probabilitat de que aquests símbols siguen els representats a la imatge $I$.
 
 \begin{equation}\label{eq:}
 \hat{s} = \argmax_{s \in \Sigma^*} p(s|I)
@@ -106,7 +104,7 @@ En el cas del reconeixement de text \emph{offline} i continu, típicament s'extr
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{images/finestra_lliscant.eps}
+\includegraphics[width=0.8\textwidth]{images/finestra_lliscant.eps}
 \caption{Finestra lliscant d'anàlisi en una imatge}
 \label{fig:finestra_lliscant}
 \end{figure}
