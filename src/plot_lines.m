@@ -5,8 +5,8 @@ function I2 = plot_lines(I, XS, P, P2)
 %image(I);
 %hold;
 
-I2 = I;
-max(I(:))
+I2 = gray2rgb(I);
+%I2 = I2 /
 
 Ntr = size(XS, 1);
 for i=1:Ntr
@@ -24,6 +24,12 @@ for i=1:Ntr
     %m1 = (Y(2)-Y(1))/(X(2)-X(1));
     %m2 = (Y(2)-Y(1))/(X(2)-X(1));
     for x=x0w:x1w
+        y1 = round(polyval(P(i,:), x-x0w));
+        y2 = round(polyval(P2(i,:), x-x0w));
+        if y1 < 1 || y2 < 1
+            fprintf('Part %d, y1 = %d, y2 = %d\n', i, y1, y2);
+            continue;
+        end
         I2(y1,x,:) = [1 0 0];
         I2(y2,x,:) = [1 0 0];
     end

@@ -6,6 +6,9 @@ rgb=zeros(m,n,3);
 rgb(:,:,1)=Image;
 rgb(:,:,2)=rgb(:,:,1);
 rgb(:,:,3)=rgb(:,:,1);
-Image=rgb/255;
-%Image=rgb;
+if max(rgb(:)) > 1
+    Image=rgb/255;
+else
+    Image=rgb;
+end
 end

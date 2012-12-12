@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="rf.eps">
+   sodipodi:docname="rf.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="65.439863"
-     inkscape:cy="579.5124"
+     inkscape:zoom="1"
+     inkscape:cx="231.76707"
+     inkscape:cy="575.44282"
      inkscape:document-units="px"
      inkscape:current-layer="capa1"
      showgrid="false"
@@ -86,7 +86,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -378,7 +378,7 @@
     </g>
     <g
        id="g4126"
-       transform="translate(93.29599,11.142853)">
+       transform="translate(145.14285,49.142853)">
       <g
          ns0:preamble="/home/joapuipe/upv/pfc/images/textext.inc"
          ns0:text="Aprenentatge"
@@ -464,7 +464,7 @@
     </g>
     <g
        id="g4107"
-       transform="translate(82,-87.142853)">
+       transform="translate(28,-49.142853)">
       <rect
          style="fill:none;stroke:#000000;stroke-width:0.46281192px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          id="rect2985-7-3"
@@ -569,21 +569,6 @@
        id="path4163"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.98952198px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
-       d="m 356,492.36217 117.98803,0"
-       id="path5941"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.98492551px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
-       d="m 341.67742,473.7796 27.5968,-57.82479"
-       id="path6127"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.98819113px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
-       d="m 461.89312,415.96608 34.29468,56.44879"
-       id="path6313"
-       inkscape:connector-curvature="0" />
-    <path
        style="fill:none;stroke:#000000;stroke-width:0.98648727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
        d="m 68,492.36217 61.79548,0"
        id="path6499"
@@ -635,7 +620,7 @@
    id="path6796" />
 </g>    <path
        style="fill:none;stroke:#000000;stroke-width:0.98648727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
-       d="m 567.77822,492.36217 61.79548,0"
+       d="m 513.77822,530.36217 61.79548,0"
        id="path6499-4"
        inkscape:connector-curvature="0" />
     <g
@@ -650,7 +635,7 @@
        font-style="normal"
        stroke-miterlimit="10.433"
        xml:space="preserve"
-       transform="matrix(1,0,0,-1,350.82843,1193.9622)"
+       transform="matrix(1,0,0,-1,296.82843,1231.9622)"
        id="g7055"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
 <path
@@ -705,7 +690,7 @@
    style="fill:#000000;stroke-width:0" />
 </g>    <path
        style="fill:none;stroke:#000000;stroke-width:0.9908011px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9-6)"
-       d="m 340.82547,372.47901 28.11337,35.17857"
+       d="m 392.82547,414.47901 28.11337,35.17857"
        id="path7195"
        inkscape:connector-curvature="0" />
     <g
@@ -720,7 +705,7 @@
        font-style="normal"
        stroke-miterlimit="10.433"
        xml:space="preserve"
-       transform="matrix(1,0,0,-1,-15.245167,1078.8492)"
+       transform="matrix(1,0,0,-1,-3.245167,1100.8492)"
        id="g7810"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
 <path
@@ -828,5 +813,15 @@
    d="m 410.4,701.29 0,0.03 -0.01,0.03 0,0.03 0,0.02 -0.01,0.03 -0.01,0.03 -0.01,0.02 -0.01,0.03 -0.01,0.02 -0.01,0.02 -0.01,0.02 -0.02,0.03 -0.01,0.02 -0.02,0.02 -0.01,0.01 -0.02,0.02 -0.02,0.02 -0.02,0.01 -0.02,0.02 -0.02,0.01 -0.02,0.02 -0.02,0.01 -0.03,0.01 -0.02,0.01 -0.02,0.01 -0.03,0 -0.02,0.01 -0.03,0.01 -0.02,0 -0.03,0 -0.02,0.01 -0.03,0 c -0.31,0 -0.53,-0.27 -0.53,-0.53 0,-0.27 0.22,-0.53 0.53,-0.53 0.28,0 0.53,0.21 0.53,0.53 z"
    inkscape:connector-curvature="0"
    style="fill:#000000;stroke-width:0" />
-</g>  </g>
+</g>    <path
+       style="fill:none;stroke:#000000;stroke-width:0.98837036px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-mid:none;marker-end:url(#Arrow1Mend-9-6)"
+       d="m 356.21875,493.69812 64.26012,-33.02344"
+       id="path4094"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.98990309px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-9-6)"
+       d="m 356.33763,493.70363 64.34309,38.72105"
+       id="path4468"
+       inkscape:connector-curvature="0" />
+  </g>
 </svg>
