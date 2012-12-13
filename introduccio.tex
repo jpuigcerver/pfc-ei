@@ -42,7 +42,7 @@ En el cas de l'aprenentatge supervisat, que és el més estès i el que s'utilit
 \label{fig:rf}
 \end{figure}
 
-L'objectiu de l'aprenentatge supervisat pot interpretar-se com l'estimació d'una funció $g$ amb perfil $g : X \rightarrow C$, on $X$ és l'espai de característiques del senyal i $C$ el conjunt de categories; de manera que es minimitzen els errors de classificació per a un conjunt de dades d'entrenament $D = \{(x_1, c_1), (x_2, c_2), \ldots, (x_n, c_n)\}$ on $x_i$ és són les característiques obtingudes d'una mostra del senyal d'entrada i $c_i$ la seva categoria assignada. \\
+L'objectiu de l'aprenentatge supervisat pot interpretar-se com l'estimació d'una funció $g$ amb perfil $g : X \rightarrow C$, on $X$ és l'espai de característiques del senyal i $C$ el conjunt de categories; de manera que es minimitzen els errors de classificació per a un conjunt de dades d'entrenament $D = \{(x_1, c_1), (x_2, c_2), \ldots, (x_n, c_n)\}$ on $x_i$ és són les característiques obtingudes \mbox{d'una} mostra del senyal d'entrada i $c_i$ la seva categoria assignada. \\
 
 La millor manera de construir aquesta funció és assignant la categoria $\hat{c}$ que maximitza la probabilitat de que les característiques del senyal observat representen aquesta categoria \cite{DH73}.
 \begin{equation}\label{eq:bayes_classif}
@@ -75,7 +75,7 @@ Una altra divisió en les tasques de reconeixement de text, és si els símbols 
 \begin{subfigure}[b]{0.4\textwidth}
 \centering
 \includegraphics[width=\textwidth]{images/reconeixement_continu.eps}
-\caption{Text amb símbols continu}\label{fig:text_continu}
+\caption{Text amb símbols continus}\label{fig:text_continu}
 \end{subfigure}
 \caption{Dos exemples d'una paraula escrita amb text segmentat i continu.}
 \end{figure}
@@ -88,7 +88,7 @@ Entre els principals problemes als que s'enfronta un bon sistema de reconeixemen
 
 L'etapa de preprocessament que es descrivia abans intenta per una banda eliminar o reduir el soroll en les imatges, i per altra, reduir les diferències en els estils d'escriptura. La correcta segmentació del cos central del text és important per aplicar certes transformacions que tenen com a objectiu la reducció d'aquest segon problema.\\
 
-Aquest projecte s'ha realitzat en un context de reconeixement de text manuscrit \emph{offline} i continu, encara que els mètodes estudiats en aquest projecte per a la segmentació del cos central del text poden ser utilitzats igualment en un entorn de text segmentat.\\
+Aquest projecte s'ha realitzat en un context de reconeixement de text manuscrit \emph{offline} i continu.\\
 
 Podem aplicar l'equació \ref{eq:bayes_classif} que s'havia presentat anteriorment per solucionar el problema del reconeixement de text \emph{offline}. Suposem que disposem d'una imatge $I$ que conté cert text, llavors l'objectiu és trobar la seqüència de símbols $\hat{s} = s_1, s_2, \ldots, s_N$ que maximitza la probabilitat de que aquests símbols siguen els representats a la imatge $I$.
 
