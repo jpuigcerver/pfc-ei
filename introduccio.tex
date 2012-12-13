@@ -6,7 +6,7 @@ Des de fa unes poques dècades, els ordinadors permeten emmagatzemar una àmplia
 
 Malauradament, els llibres manuscrits i impresos no sempre han tingut èxit en la seva missió de preservar el coneixement. Sols cal recordar el desastrós incendi de l'antiga Biblioteca d'Alexandria que provocà que milers d'obres d'autors de l'antiguitat es perderen per sempre. Ajudar a la preservació de la informació continguda en els llibres manuscrits i ajudar també a la cerca del contingut en aquests, són dos dels motius que van fer nàixer el reconeixement de text manuscrit (HTR, de l'anglès \emph{Handwriting Text Recognition}) a principis del segle XX.\\
 
-Tot i el progrés aconseguit en els últims anys pel Reconeixement de Text Manuscrit, aquest encara té molts problemes per resoldre. Molts d'ells causats perquè la gran variabilitat que presenta el text, en quant a l'estil d'escriptura, no aporta cap informació rellevant per a la classificació dels símbols representats a les imatges i dificulta el seu reconeixement. Per exemple, un mateix autor no escriu un mateix símbol sempre de la mateixa forma, ni de la mateixa grandària i ni tan sols amb la mateixa orientació. Per això, un dels components fonamentals de qualsevol sistema de reconeixement de l'escriptura és la normalització d'aquest text a la imatge, un procés que tracta de reduir aquesta variabilitat.\\
+Tot i el progrés aconseguit en els últims anys pel Reconeixement de Text Manuscrit, aquest encara té molts problemes per resoldre. Molts d'ells causats perquè la gran variabilitat que presenta el text, en quant a l'estil d'escriptura, no aporta cap informació rellevant per a la classificació dels símbols representats a les imatges i dificulta el seu reconeixement. Per exemple, un mateix autor no escriu un mateix símbol sempre de la mateixa forma, ni de la mateixa grandària i ni tan sols amb la mateixa orientació. Per això, un dels components fonamentals de qualsevol sistema de reconeixement de l'escriptura és la normalització d'aquest text, un procés que tracta de reduir aquesta variabilitat.\\
 
 Aquest projecte compara i quantifica les diferències entre dues alternatives per solucionar un dels problemes que forma part d'aquest procés de normalització: la segmentació del del cos central del text manuscrit. El cos central d'una línia de text manuscrit és aquella porció de la línia on resideix el cos central de cadascun dels símbols que formen el text. Les dues alternatives estudiades per a aquesta segmentació del cos central estan basades en un enfocament heurístic del problema, on un algorisme amb unes regles pre-establertes determina quina és la regió del cos central, i una altra basada en tècniques d'aprenentatge supervisat, on un humà ha segmentat manualment el cos central d'un conjunt d'imatges de mostra i ha entrenat el sistema per a que intente segmentar de manera semblant les noves imatges. Els detalls es veuran en el capítol \ref{cap:seg}.
 
@@ -77,7 +77,7 @@ Una altra divisió en les tasques de reconeixement de text, és si els símbols 
 \includegraphics[width=\textwidth]{images/reconeixement_continu.eps}
 \caption{Text amb símbols continus}\label{fig:text_continu}
 \end{subfigure}
-\caption{Dos exemples d'una paraula escrita amb text segmentat i continu.}
+\caption{Dos exemples d'una paraula escrita amb símbols aïllats i continus.}
 \end{figure}
 
 Entre els principals problemes als que s'enfronta un bon sistema de reconeixement del text manuscrit són:
@@ -105,7 +105,7 @@ En el cas del reconeixement de text \emph{offline} i continu, típicament s'extr
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{images/finestra_lliscant.eps}
-\caption{Finestra lliscant d'anàlisi en una imatge}
+\caption{Finestra lliscant d'anàlisi en una imatge.}
 \label{fig:finestra_lliscant}
 \end{figure}
 
